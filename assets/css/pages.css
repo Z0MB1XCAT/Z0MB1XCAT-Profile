@@ -90,8 +90,6 @@
   .hero-row { grid-template-columns: auto 1fr auto; gap: clamp(24px, 4vw, 64px); }
 }
 .hero-lead { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; max-width: 30em; letter-spacing: -.01em; }
-.hero-caption { max-width: 17em; text-align: right; }
-@media (max-width: 899px) { .hero-caption { display: none; } }
 .hero-name {
   position: relative;
   z-index: 2;
@@ -312,7 +310,6 @@ html:not(.js) .statement .w { color: var(--ink); }
 .laps li[data-tone='red'] { background: #4f1820; color: #ff9aa1; }
 .laps li[data-tone='cream'] { background: var(--plum-3); color: var(--on-plum); }
 .laps .empty { background: none; padding: 0; font-weight: 400; color: var(--on-plum-2); }
-.board-note { margin-top: auto; padding-top: 28px; }
 
 /* ---------- week ---------- */
 
