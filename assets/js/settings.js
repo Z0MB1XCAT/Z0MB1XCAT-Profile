@@ -69,7 +69,7 @@
       out.push('', 'Pedal curves (output at 20/40/60/80/100% travel)');
       cs.forEach(function (c) { out.push('- ' + nameList(c.names) + ': ' + c.pts.join(' / ')); });
     }
-    out.push('', 'z0mb1xcat.github.io/rig.html#settings');
+    out.push('', 'z0mb1xcat.github.io/Z0MB1XCAT-Profile/rig.html#settings');
     return out.join('\n');
   }
 

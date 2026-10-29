@@ -8,134 +8,7 @@
   .sec-head .lead { justify-self: end; max-width: 30em; }
 }
 
-/* ---------- intro: onboard cold open ----------
-   The onboard plays dimmed behind the start controls; Engine start runs it
-   with sound under cinema bars and a broadcast name plate, then a flash
-   cuts to the page (home.js). */
-
-.gate {
-  position: fixed;
-  inset: 0;
-  z-index: 400;
-  overflow: hidden;
-  background: #000;
-  color: var(--on-plum);
-  transition: opacity .7s ease;
-}
-.gate[hidden], html:not(.js) .gate, html.gate-seen .gate { display: none; }
-html.gate-open { overflow: hidden; }
-.gate.is-leaving { opacity: 0; pointer-events: none; }
-.gate-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.gate::before { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .55)); pointer-events: none; }
-
-/* the start controls, over the dimmed teaser */
-.gate-start {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  justify-items: center;
-  padding: clamp(18px, 3vw, 34px) var(--gutter) clamp(22px, 4vh, 44px);
-  background: linear-gradient(to top, rgba(11, 7, 16, .94), rgba(11, 7, 16, .62) 45%, rgba(11, 7, 16, .78));
-  transition: opacity .5s ease;
-}
-.gate.is-running .gate-start { opacity: 0; pointer-events: none; }
-.gate-top { justify-self: stretch; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.gate-brand { display: flex; align-items: center; gap: 12px; font-family: var(--f-display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1; }
-.gate-brand img { border-radius: 6px; }
-.gate-where { display: grid; text-align: right; font-weight: 600; font-size: 14px; line-height: 1.35; }
-.gate-where span { font-weight: 400; color: var(--on-plum-2); }
-.gate-bottom { grid-row: 3; display: grid; justify-items: center; gap: 16px; text-align: center; }
-.gate-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.gate-mute { background: none; border: 0; padding: 8px 10px; color: var(--on-plum-2); font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: underline; text-underline-offset: .25em; text-decoration-color: rgba(241, 236, 245, .3); transition: color .2s ease, text-decoration-color .2s ease; }
-.gate-mute:hover { color: var(--on-plum); text-decoration-color: var(--accent); }
-.gate-mute:active { transform: scale(.97); }
-.gate-note { color: var(--on-plum-2); font-size: 13px; }
-
-/* the engine start button, ringed with LEDs */
-.ignite {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 128px; height: 128px;
-  border-radius: 50%;
-  border: 0;
-  background: radial-gradient(circle at 50% 35%, #2a1d37, #120b19 70%);
-  color: var(--on-plum);
-  cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), inset 0 -10px 20px rgba(0, 0, 0, .5), 0 0 0 1px rgba(241, 236, 245, .14), 0 18px 50px -12px rgba(0, 0, 0, .8);
-  transition: transform .45s var(--spring);
-  -webkit-tap-highlight-color: transparent;
-}
-.ignite:hover { transform: scale(1.05); }
-.ignite:active { transform: scale(.95); transition-duration: .1s; }
-.ignite:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-.ignite-label { font-family: var(--f-display); font-weight: 850; text-transform: uppercase; font-size: 20px; line-height: .95; letter-spacing: .02em; }
-.ignite-ring { position: absolute; inset: 0; transition: transform 6s linear; }
-.ignite:hover .ignite-ring { transform: rotate(30deg); }
-.ignite-ring i {
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 5px; height: 11px;
-  margin: -5.5px 0 0 -2.5px;
-  border-radius: 2px;
-  background: rgba(241, 236, 245, .16);
-  transform: rotate(calc(var(--k) * 15deg)) translateY(-52px);
-}
-.ignite-ring i::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: var(--accent); opacity: 0; transition: opacity .12s linear; }
-.ignite:hover .ignite-ring i::after { opacity: .25; }
-.gate.is-running .ignite-ring i::after { opacity: 1; transition-delay: calc(var(--k) * 12ms); }
-
-/* cinema bars */
-.ob-bar { position: absolute; left: 0; right: 0; height: 13vh; background: #000; z-index: 2; transition: transform .9s cubic-bezier(.7, 0, .2, 1); }
-.ob-bar--t { top: 0; transform: translateY(-100%); }
-.ob-bar--b { bottom: 0; transform: translateY(100%); }
-.gate.is-bars .ob-bar { transform: none; }
-.gate.is-out .ob-bar--t { transform: translateY(-100%); transition-duration: .4s; }
-.gate.is-out .ob-bar--b { transform: translateY(100%); transition-duration: .4s; }
-
-/* broadcast name plate and team chips */
-.ob-name { position: absolute; z-index: 3; left: var(--gutter); bottom: calc(13vh + 26px); display: grid; overflow: hidden; }
-.ob-plate { display: flex; align-items: stretch; transform: translateX(-110%); transition: transform .7s cubic-bezier(.16, 1, .3, 1); }
-.gate.is-name .ob-plate { transform: none; }
-.gate.is-out .ob-plate { transform: translateX(-110%); transition: transform .35s cubic-bezier(.7, 0, .2, 1); }
-.ob-plate > i { width: 10px; background: var(--accent); }
-.ob-plate img { width: 64px; height: 64px; background: var(--plum); }
-.ob-plate div { display: grid; align-content: center; padding: 0 20px 0 16px; background: var(--paper); color: var(--ink); }
-.ob-plate b { font-family: var(--f-display); font-weight: 900; font-size: 40px; line-height: .9; text-transform: uppercase; }
-.ob-plate div > span { font-size: 13px; color: var(--ink-2); }
-.ob-teams { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px; transform: translateX(-110%); transition: transform .6s cubic-bezier(.16, 1, .3, 1); }
-.gate.is-teams .ob-teams { transform: none; }
-.gate.is-out .ob-teams { transform: translateX(-110%); transition: transform .3s cubic-bezier(.7, 0, .2, 1); }
-.ob-teams span { display: flex; align-items: center; gap: 8px; padding: 7px 12px; background: rgba(11, 7, 16, .86); color: var(--on-plum); font-size: 13px; font-weight: 600; }
-.ob-teams span i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); }
-.ob-tag { position: absolute; z-index: 3; right: var(--gutter); top: calc(13vh + 22px); display: flex; align-items: center; gap: 10px; padding: 7px 12px; background: rgba(11, 7, 16, .8); font-size: 13px; font-weight: 600; opacity: 0; transition: opacity .4s ease; }
-.ob-tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--lamp); animation: blink 1.4s ease-in-out infinite; }
-.gate.is-name .ob-tag { opacity: 1; }
-.gate.is-out .ob-tag { opacity: 0; }
-
-/* the cut to the page */
-.gate-flash { position: absolute; inset: 0; z-index: 6; background: var(--paper); opacity: 0; pointer-events: none; }
-.gate.is-cut .gate-flash { opacity: 1; transition: opacity .12s linear; }
-
-.gate-skip { position: absolute; z-index: 5; right: var(--gutter); bottom: clamp(22px, 4vh, 44px); background: none; border: 0; padding: 8px; color: var(--on-plum-2); font-size: 14px; cursor: pointer; transition: color .2s ease, opacity .3s ease; }
-.gate-skip:hover { color: var(--on-plum); }
-.gate-skip:active { transform: scale(.97); }
-.gate.is-cut .gate-skip { opacity: 0; }
-
-@media (max-width: 599px) {
-  .ob-plate b { font-size: 30px; }
-  .ob-plate img { width: 52px; height: 52px; }
-  .gate-skip { bottom: auto; top: 70px; }
-}
-
-/* while the intro runs, the page waits underneath */
-html.gate-open .nav { opacity: 0; pointer-events: none; }
-.nav { transition: transform .5s var(--out), opacity .8s ease .2s; }
-html.gate-open .hero-row, html.gate-open .hero-name, html.gate-open .hero-stripe { visibility: hidden; }
-
-/* ---------- start lights (gate + game) ---------- */
+/* ---------- start lights (the start game) ---------- */
 
 .gantry {
   display: flex;
@@ -958,3 +831,9 @@ html:not(.js) .lap-sound { display: none; }
 .nr-track .cal-tag { margin-left: 0; }
 .nr-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-size: 14px; color: var(--ink-2); }
 .nr-meta .team { color: var(--ink); }
+
+/* leagues with no fixed calendar */
+.cal-also { margin-top: 28px; display: grid; gap: 8px; }
+.cal-also[hidden] { display: none; }
+.cal-also p { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; padding: 14px 16px; background: var(--paper-2); border-radius: var(--r-sm); color: var(--ink-2); }
+.cal-also .team { color: var(--ink); }

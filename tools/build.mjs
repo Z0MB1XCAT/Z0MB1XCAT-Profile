@@ -4,7 +4,7 @@
    Each file in src/ holds only what is different about its page:
 
      <!--@page { "title": "...", "description": "...", ... } -->
-     <!--@before-->   optional: markup placed before the nav (the home intro)
+     <!--@before-->   optional: markup placed before the nav
      <!--@main-->     the page content, placed inside <main>
 
    Run it after editing anything in src/ or the shared chrome below:
@@ -19,7 +19,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://z0mb1xcat.github.io/';
+// where GitHub Pages serves the site (the repo is Z0MB1XCAT/Z0MB1XCAT-Profile)
+const SITE = 'https://z0mb1xcat.github.io/Z0MB1XCAT-Profile/';
 const EMAIL = 'businessdexterrees@gmail.com';
 
 const LINKS = [
@@ -66,14 +67,7 @@ function render(name, p) {
   const url = SITE + (name === 'index' || name === '404' ? '' : out);
   const scripts = (p.scripts || []).map(s => `  <script defer src="${s}"></script>\n`).join('');
   const modules = (p.modules || []).map(s => `  <script type="module" src="${s}"></script>\n`).join('');
-  const jsClass = p.gate
-    ? `  <script>
-    document.documentElement.classList.add('js');
-    try {
-      if (sessionStorage.getItem('z0-gate') === '1' || location.hash) document.documentElement.classList.add('gate-seen');
-    } catch (e) {}
-  </script>\n`
-    : `  <script>document.documentElement.classList.add('js');</script>\n`;
+  const jsClass = `  <script>document.documentElement.classList.add('js');</script>\n`;
   const menu = LINKS.map(([href, t, d]) => `      <li><a href="${href}"${href === out ? ' aria-current="page"' : ''}><span class="t">${t}</span><span class="d">${d}</span></a></li>`).join('\n');
   const socials = SOCIALS.map(([href, t]) => `        <li><a href="${href}">${t}</a></li>`).join('\n');
   const footPages = LINKS.map(([href, t]) => `            <li><a href="${href}">${t}</a></li>`).join('\n');

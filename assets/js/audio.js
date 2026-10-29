@@ -3,7 +3,6 @@
    synthesised: the lap page plays the recording in step with the car, and
    the sound toggles and the start game play short slices of it. Anything
    asked for before the file has decoded waits for it briefly or is skipped.
-   (The home intro plays the onboard video, which carries its own sound.)
 
    Nothing plays until a visitor turns sound on. The choice is remembered for
    the browser session, but browsers only allow audio after a click, tap or

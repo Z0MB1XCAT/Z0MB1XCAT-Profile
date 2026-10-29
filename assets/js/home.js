@@ -1,5 +1,5 @@
-/* Home page: intro gate, the statement that fills as you read, the photo
-   parallax, and the lights-out game. The 3D scenes live in three/home-3d.js. */
+/* Home page: the statement that fills as you read, the photo parallax,
+   and the lights-out game. The 3D scenes live in three/home-3d.js. */
 (function () {
   'use strict';
 
@@ -10,88 +10,6 @@
   function lights(root) {
     var pods = root.querySelectorAll('.pod');
     return function (k) { pods.forEach(function (p, i) { p.classList.toggle('is-on', i < k); }); };
-  }
-
-  /* ------------------------------------------------------------------
-     Intro: a cold open on the onboard lap. Once per browser session.
-     The onboard runs silently behind the Engine start button as a teaser;
-     pressing it (the click browsers need before sound may play) rewinds to
-     the drive out of Remus and plays it with its engine sound. Cinema bars
-     close in, the name plate slides on, and a flash cuts to the page as the
-     3D hero launches (z0:gate-out).
-     While it is open, everything else on the page is inert, so keyboard
-     focus can't wander behind it.
-     ------------------------------------------------------------------ */
-  var gate = document.querySelector('[data-gate]');
-  var html = document.documentElement;
-
-  if (gate && !html.classList.contains('gate-seen')) {
-    html.classList.add('gate-open');
-    if (Z0.lenis) Z0.lenis.stop();
-    // (anything already inert, like the closed menu, is left as it is)
-    var outside = Array.prototype.filter.call(document.body.children, function (el) {
-      return el !== gate && el.tagName !== 'SCRIPT' && !el.hasAttribute('inert');
-    });
-    outside.forEach(function (el) { el.setAttribute('inert', ''); });
-
-    var video = gate.querySelector('[data-gate-video]');
-    var START = 16.9; // seconds into the lap: braking for Remus, then the drive out
-    var timers = [];
-    var leaving = false, started = false;
-    gate.querySelectorAll('.ignite-ring i').forEach(function (el, k) { el.style.setProperty('--k', k); });
-    // the video is only fetched when the intro is actually shown
-    if (video) { video.preload = 'auto'; video.load(); }
-    if (video && !reduced) { var tp = video.play(); if (tp && tp.catch) tp.catch(function () {}); }
-    var first = gate.querySelector('[data-gate-go]');
-    if (first) first.focus({ preventScroll: true });
-
-    var leave = function () {
-      if (leaving) return;
-      leaving = true;
-      timers.forEach(clearTimeout);
-      try { sessionStorage.setItem('z0-gate', '1'); } catch (e) { /* private mode */ }
-      gate.classList.add('is-leaving');
-      outside.forEach(function (el) { el.removeAttribute('inert'); });
-      html.classList.remove('gate-open');
-      if (Z0.lenis) Z0.lenis.start();
-      Z0.gateOut = true;
-      document.dispatchEvent(new CustomEvent('z0:gate-out'));
-      setTimeout(function () {
-        if (video) video.pause();
-        gate.hidden = true;
-        var m = document.querySelector('#main');
-        if (m) m.focus({ preventScroll: true });
-      }, reduced ? 60 : 800);
-    };
-
-    var run = function (withSound) {
-      if (started) return;
-      started = true;
-      S.set(withSound);
-      if (reduced || !video) { leave(); return; }
-      gate.classList.add('is-running');
-      video.loop = false;
-      video.muted = !withSound;
-      video.volume = .85;
-      video.currentTime = START;
-      var p = video.play();
-      // if the browser refuses sound, run it silent rather than not at all
-      if (p && p.catch) p.catch(function () { video.muted = true; video.play().catch(function () {}); });
-      var at = function (ms, fn) { timers.push(setTimeout(fn, ms)); };
-      at(300, function () { gate.classList.add('is-bars'); });
-      at(1500, function () { gate.classList.add('is-name'); });
-      at(3300, function () { gate.classList.add('is-teams'); });
-      at(5600, function () { gate.classList.add('is-out'); });
-      at(6100, function () { gate.classList.add('is-cut'); });
-      at(6250, leave);
-    };
-
-    gate.querySelectorAll('[data-gate-go]').forEach(function (b) {
-      b.addEventListener('click', function () { run(b.getAttribute('data-gate-go') === 'sound'); });
-    });
-    var skip = gate.querySelector('[data-gate-skip]');
-    if (skip) skip.addEventListener('click', leave);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !gate.hidden) leave(); });
   }
 
   /* ------------------------------------------------------------------

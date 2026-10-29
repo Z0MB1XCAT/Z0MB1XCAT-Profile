@@ -26,8 +26,10 @@
 
   var rounds = [];
   leagues.forEach(function (lg) {
-    (lg.rounds || []).forEach(function (r) {
-      if (!r.date) return;
+    (lg.rounds || []).forEach(function (r0) {
+      if (!r0.date) return;
+      // a round takes its league's usual start time unless it has its own
+      var r = Object.assign({}, r0, { time: r0.time || lg.time || '' });
       var start = londonTime(r.date, r.time);
       // a timed race counts as "next" until three hours after the start;
       // an untimed one until the end of its day
@@ -75,6 +77,16 @@
   var root = document.querySelector('[data-calendar]');
   if (!root) return;
   root.hidden = false;
+
+  // leagues without a published calendar, as one line each
+  var also = root.querySelector('[data-cal-also]');
+  var unlisted = leagues.filter(function (lg) { return !(lg.rounds || []).length && lg.schedule; });
+  if (also && unlisted.length) {
+    also.hidden = false;
+    also.innerHTML = unlisted.map(function (lg) {
+      return '<p><span class="team"><i style="--c:' + esc(lg.color) + '"></i>' + esc(lg.league) + '</span><span>' + esc(lg.team) + '. ' + esc(lg.schedule) + '.</span></p>';
+    }).join('');
+  }
 
   var nextEl = root.querySelector('[data-cal-next]');
   if (next && nextEl) {

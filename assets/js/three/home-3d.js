@@ -10,10 +10,6 @@ if (heroCanvas && window.RBR3D && window.Track) {
   try {
     const small = window.matchMedia('(max-width: 899px)').matches;
     const portrait = window.innerHeight > window.innerWidth;
-    const Z0 = window.Z0 || {};
-    const gate = document.querySelector('[data-gate]');
-    // the intro is still on screen: hold on the grid and launch as it cuts away
-    const gateUp = !!gate && !gate.hidden && !document.documentElement.classList.contains('gate-seen') && !Z0.gateOut;
     const stage = heroCanvas.closest('.hero-stage');
     const hero = createTrackScene(heroCanvas, {
       mode: 'hero',
@@ -29,8 +25,8 @@ if (heroCanvas && window.RBR3D && window.Track) {
       introWait: true,
     });
     stage.classList.add('is-3d');
-    if (gateUp) document.addEventListener('z0:gate-out', () => hero.go(), { once: true });
-    else hero.go();
+    // the car launches off the grid as the page opens
+    hero.go();
     new IntersectionObserver(([en]) => { if (en.isIntersecting) hero.start(); else hero.stop(); }).observe(heroCanvas);
   } catch (e) {
     console.warn('3D hero unavailable:', e);

@@ -4,16 +4,20 @@
 
    One entry per round:
      { round: 5, date: '2026-11-14', time: '20:00', track: 'Monza', country: 'it' }
-   - date is the UK date; time (optional) is the UK start time. Leave time
-     out while it isn't known: the round then shows its date only.
+   - date is the UK date. time is the UK start time: set it on the league
+     for the usual start, and on a round only when that round differs.
+     With no time at all, a round shows its date only.
    - country is the two-letter code of a flag in assets/img/flags/
    - tag (optional) shows a small label, e.g. 'Wildcard'
-   - after the race, add  result: 'P3'  (or 'DNF') to show it in the results */
+   - after the race, add  result: 'P3'  (or 'DNF') to show it in the results
+   A league with no published rounds can carry  schedule: '...'  instead,
+   which is shown as a line under the calendar. */
 window.Z0_CALENDAR = [
   {
     league: 'Sector 04 Racing',
     season: 'Season 2',
     team: 'McLaren',
+    time: '20:00',
     color: '#ff8000',
     rounds: [
       { round: 1, date: '2026-10-10', track: 'Monza', country: 'it', result: 'P3' },
@@ -36,6 +40,7 @@ window.Z0_CALENDAR = [
   {
     league: 'See The Air',
     team: 'Alpine',
+    time: '19:00',
     color: '#2293d1',
     rounds: [
       { round: 1, date: '2026-10-16', track: 'Mexico City', country: 'mx' },
@@ -53,10 +58,11 @@ window.Z0_CALENDAR = [
     ],
   },
   {
-    // no published schedule yet
+    // no fixed calendar: races are on Sundays at varying times
     league: 'Overdrive Racing Series',
     team: 'Williams',
     color: '#64c4ff',
+    schedule: 'Races on Sundays, at varying times',
     rounds: [],
   },
 ];

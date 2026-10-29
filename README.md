@@ -9,7 +9,7 @@ as they are; Three.js, Lenis and the fonts load from CDNs.
 
 | File          | What it is                                                              |
 |---------------|-------------------------------------------------------------------------|
-| `index.html`  | Onboard intro, 3D circuit hero, results, 3D rig, start game, week       |
+| `index.html`  | 3D circuit hero, results, 3D rig, start game, week, next race           |
 | `story.html`  | The story as a scroll-driven 3D lap of the Red Bull Ring                |
 | `driver.html` | Results, leagues and teams, driving style, favourites, goals            |
 | `rig.html`    | The rig in 3D with exploded view, full spec, settings, wishlist         |
@@ -90,7 +90,7 @@ assets/data/               calendar.js and settings.js, the files you edit
 assets/js/site.js          schedule and live status, nav, menu, sound toggle, embeds
 assets/js/motion.js        headline and list reveals, photo wipes, marquee, magnetic buttons
 assets/js/audio.js         engine sound from the onboard recording
-assets/js/home.js          onboard intro, statement fill, photo parallax, start game
+assets/js/home.js          statement fill, photo parallax, start game
 assets/js/live.js          live page status and countdown
 assets/js/calendar.js      race calendar on the live page
 assets/js/settings.js      settings tabs on the rig page
@@ -118,8 +118,8 @@ in the V1 project (`MyWebsite/videos/_source/onboard-original.mp4`).
 ## Sound
 
 All engine sound is from my own onboard lap of the Red Bull Ring in Assetto
-Corsa, so it is real and it is mine to use. The home intro plays the onboard
-video with its own sound. On the lap page the recording is scrubbed in step
+Corsa, so it is real and it is mine to use. The onboard video on the home
+page carries its own sound. On the lap page the recording is scrubbed in step
 with the car: the `AUDIO` list in `assets/js/three/lap-3d.js` holds the moment
 (in seconds) the real car passed the start line, each corner and the finish,
 and everything in between is interpolated. The sound toggles and the start
@@ -142,8 +142,7 @@ GT Omega Prime Lite and Inertia). There are no model files to load.
 `motion.js` adds the reveals, the marquee and the magnetic buttons. Pages
 crossfade between each other with the browser's View Transitions, set up in
 `site.css`. All of it switches off when a visitor asks for reduced motion,
-and none of it hides content if JavaScript doesn't run. While the home intro
-is open, the rest of the page is inert, so keyboard focus stays in the intro.
+and none of it hides content if JavaScript doesn't run.
 
 ## Where the data comes from
 
@@ -159,25 +158,24 @@ Credits are in every page footer. Keep them if you change the design.
 
 ## Publishing on GitHub Pages
 
-The share links and the 404 page assume the site lives at the root of
-`https://z0mb1xcat.github.io/`, which needs a repository named exactly
-`Z0MB1XCAT.github.io` (any capitalisation).
+The site is the repository `Z0MB1XCAT/Z0MB1XCAT-Profile`, published by GitHub
+Pages from the `main` branch at:
 
-1. Create the repository on GitHub, then from this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "Z0MB1XCAT site"
-   git branch -M main
-   git remote add origin https://github.com/Z0MB1XCAT/Z0MB1XCAT.github.io.git
-   git push -u origin main
-   ```
-2. In the repository, open Settings, then Pages, and set the source to the
-   `main` branch, root folder.
+**https://z0mb1xcat.github.io/Z0MB1XCAT-Profile/**
 
-If you publish under a different repository name instead, the site lives at
-`https://z0mb1xcat.github.io/<repo-name>/`. In that case change `base` in
-`src/404.html` to `/<repo-name>/` and `SITE` in `tools/build.mjs`, then rebuild.
+To publish a change: rebuild if you edited `src/`, then commit and push.
+
+```bash
+node tools/build.mjs
+git add -A
+git commit -m "Describe the change"
+git push
+```
+
+Pages updates within a minute or two. The share links (`SITE` in
+`tools/build.mjs`) and the 404 page (`base` in `src/404.html`) both use the
+`/Z0MB1XCAT-Profile/` path. If the site ever moves (a renamed repo, a
+`Z0MB1XCAT.github.io` repo, or a custom domain), change those two and rebuild.
 
 ## Running it locally
 

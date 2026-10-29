@@ -3,7 +3,6 @@
   "title": "Z0MB1XCAT, sim racer from Swansea",
   "description": "Z0MB1XCAT is an open-wheel sim racer from Swansea, Wales. F1 25 leagues with Alpine, McLaren and Williams, endurance with Mackles Racing, and live on Twitch most days.",
   "ogDescription": "Three F1 25 leagues, endurance with Mackles Racing, and a story told as a lap of the Red Bull Ring.",
-  "gate": true,
   "scripts": [
     "assets/js/track-rbr.js",
     "assets/js/rbr-3d.js",
@@ -17,40 +16,6 @@
   ]
 }
 -->
-<!--@before-->
-<!-- Intro: a cold open on my onboard lap of the Red Bull Ring, with its
-     engine sound. Once per browser session (home.js). -->
-<div class="gate" data-gate role="dialog" aria-modal="true" aria-labelledby="gate-title">
-  <video class="gate-video" data-gate-video muted playsinline preload="none" poster="assets/video/onboard-poster.jpg" aria-hidden="true">
-    <source src="assets/video/onboard-rbr.webm" type='video/webm; codecs="av01.0.04M.08, opus"'>
-    <source src="assets/video/onboard-rbr.mp4" type="video/mp4">
-  </video>
-  <i class="ob-bar ob-bar--t" aria-hidden="true"></i><i class="ob-bar ob-bar--b" aria-hidden="true"></i>
-  <p class="ob-tag" aria-hidden="true"><i></i>Onboard, Red Bull Ring</p>
-  <div class="ob-name" aria-hidden="true">
-    <div class="ob-plate"><i></i><img src="assets/img/logo.png" alt="" width="64" height="64"><div><b>Z<span class="z0">0</span>MB1XCAT</b><span>Open-wheel sim racer, Swansea, Wales</span></div></div>
-    <div class="ob-teams"><span><i style="--c:#2293d1"></i>Alpine</span><span><i style="--c:#ff8000"></i>McLaren</span><span><i style="--c:#64c4ff"></i>Williams</span><span><i style="--c:#8452a1"></i>Mackles Racing</span></div>
-  </div>
-  <div class="gate-start">
-    <div class="gate-top">
-      <p class="gate-brand"><img src="assets/img/logo.png" alt="" width="40" height="40"><span id="gate-title">Z<span class="z0">0</span>MB1XCAT</span></p>
-      <p class="gate-where">Onboard<span>Red Bull Ring, Assetto Corsa</span></p>
-    </div>
-    <div class="gate-bottom">
-      <div class="gate-actions">
-        <button class="ignite" type="button" data-gate-go="sound">
-          <span class="ignite-ring" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-          <span class="ignite-label">Engine<br>start</span>
-        </button>
-        <button class="gate-mute" type="button" data-gate-go="mute">Enter without sound</button>
-      </div>
-      <p class="gate-note">The sound is my own onboard lap of the Red Bull Ring.</p>
-    </div>
-  </div>
-  <div class="gate-flash" aria-hidden="true"></div>
-  <button class="gate-skip" type="button" data-gate-skip>Skip intro</button>
-</div>
-
 <!--@main-->
 <!-- Hero: the Red Bull Ring on its real terrain -->
 <section class="hero" aria-labelledby="hero-name">

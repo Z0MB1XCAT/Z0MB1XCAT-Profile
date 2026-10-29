@@ -55,13 +55,12 @@
   });
   document.querySelectorAll('.foot-big').forEach(function (el) { split(el, 'chars'); io.observe(el); });
 
-  /* hero wordmark: letters rise once the intro has gone (or straight away) */
+  /* hero wordmark: letters rise as the page opens */
   var heroName = document.querySelector('.hero-name [aria-hidden="true"]');
   if (heroName) {
     split(heroName, 'chars');
     var heroGo = function () { document.querySelector('.hero').classList.add('is-in'); };
-    if (html.classList.contains('gate-seen') || !document.querySelector('[data-gate]') || (window.Z0 && window.Z0.gateOut)) setTimeout(heroGo, 120);
-    else document.addEventListener('z0:gate-out', function () { setTimeout(heroGo, 250); }, { once: true });
+    setTimeout(heroGo, 120);
   }
 
   /* lists and tables: children rise one after another */
