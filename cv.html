@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Driver sheet | Z0MB1XCAT</title>
+  <meta name="description" content="Z0MB1XCAT's one-page driver sheet: numbers, this season, results by season, profile, rig and contact details.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,600..900;1,800..900&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/cv.css">
+  <script defer src="assets/data/profile.js"></script>
+  <script defer src="assets/data/racing.js"></script>
+  <script defer src="assets/js/racing.js"></script>
+  <script defer src="assets/js/reach.js"></script>
+  <script defer src="assets/js/cv.js"></script>
+</head>
+<body>
+<!-- The driver sheet. The numbers, seasons and reach fill themselves in from
+     assets/data/; the words below are edited here. npm run sheet prints it
+     to assets/z0mb1xcat-driver-sheet.pdf. -->
+<nav class="bar" aria-label="Driver sheet">
+  <a class="bar-btn" href="teams.html"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 8H3M7 4 3 8l4 4"/></svg>Back to the site</a>
+  <a class="bar-btn bar-btn--accent" href="assets/z0mb1xcat-driver-sheet.pdf" download>Download the PDF</a>
+</nav>
+
+<div class="sheet-wrap">
+<article class="sheet" aria-label="Z0MB1XCAT driver sheet">
+  <header class="s-head">
+    <div class="s-id">
+      <img class="s-logo" src="assets/img/logo.png" alt="" width="64" height="64">
+      <div>
+        <h1 class="s-name">Z<span class="z0">0</span>MB1XCAT</h1>
+        <p class="s-sub">Open-wheel sim racer<span class="dot"></span>Swansea, Wales</p>
+        <p class="s-date">Driver sheet, <span data-cv-updated>October 2026</span></p>
+      </div>
+    </div>
+    <dl class="s-contact">
+      <div><dt>Email</dt><dd><a href="mailto:businessdexterrees@gmail.com">businessdexterrees@gmail.com</a></dd></div>
+      <div><dt>Site</dt><dd><a href="https://z0mb1xcat.github.io/Z0MB1XCAT-Profile/">z0mb1xcat.github.io/Z0MB1XCAT-Profile</a></dd></div>
+      <div><dt>Discord</dt><dd><a href="https://discord.gg/ycYuqF2Wdp">discord.gg/ycYuqF2Wdp</a></dd></div>
+      <div><dt>Twitch</dt><dd><a href="https://www.twitch.tv/z0mb1xcat">twitch.tv/z0mb1xcat</a></dd></div>
+    </dl>
+    <figure class="s-qr">
+      <img src="assets/img/qr-site.svg" alt="QR code for z0mb1xcat.github.io/Z0MB1XCAT-Profile" width="96" height="96">
+      <figcaption>Every result, live</figcaption>
+    </figure>
+  </header>
+
+  <dl class="s-stats" data-cv-stats>
+    <div><dt>Starts</dt><dd data-stat="starts">31</dd></div>
+    <div><dt>Podiums</dt><dd data-stat="podiums">8</dd></div>
+    <div><dt>Top-10 finishes</dt><dd data-stat="top10">27</dd></div>
+    <div><dt>Average finish</dt><dd>P<span data-stat="avg">6.3</span></dd></div>
+    <div><dt>Finish rate</dt><dd data-stat="finishRate">90%</dd></div>
+    <div><dt>iRating, Formula</dt><dd data-stat="irating">1578</dd></div>
+  </dl>
+
+  <div class="s-main">
+    <div class="s-col">
+      <section>
+        <h2 class="s-h">This season</h2>
+        <div class="s-now" data-cv-now></div>
+      </section>
+      <section>
+        <h2 class="s-h">Earlier seasons</h2>
+        <ol class="s-seasons" data-cv-seasons></ol>
+        <p class="s-key"><span><span class="chip chip--pod">3</span>Podium</span><span><span class="chip chip--pts">7</span>Top 10</span><span><span class="chip chip--out">11</span>11th or lower</span><span><span class="chip chip--dnf">DNF</span>Retired</span><span><span class="s-key-pair"><span class="chip chip--pts">8</span><span class="chip chip--pod">3</span></span>Reverse grid, then feature</span></p>
+      </section>
+      <section>
+        <h2 class="s-h">Racecraft</h2>
+        <ul class="s-list">
+          <li><b>Starts.</b> My strongest phase: clean getaways and places made up into turn one. Best reaction time 0.183 s.</li>
+          <li><b>Overtaking.</b> Committed on the way in, controlled through the move: I set passes up rather than throw them in.</li>
+          <li><b>Clean racing.</b> A race can't be won on lap one, so I keep it tidy and bring the car home.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="s-col">
+      <section>
+        <h2 class="s-h">Profile</h2>
+        <dl class="s-dl">
+          <div><dt>Based in</dt><dd>Swansea, Wales (UK time)</dd></div>
+          <div><dt>Discipline</dt><dd>Open-wheel, plus endurance</dd></div>
+          <div><dt>Main sim</dt><dd>F1 25</dd></div>
+          <div><dt>Also races</dt><dd>iRacing, ACC, Assetto Corsa</dd></div>
+          <div><dt>Racing since</dt><dd data-cv-since>December 2025</dd></div>
+          <div><dt>Race nights</dt><dd>Friday to Sunday</dd></div>
+          <div><dt>Endurance</dt><dd>6 hours solo at Road America (LMP2)</dd></div>
+        </dl>
+      </section>
+      <section>
+        <h2 class="s-h">Seats</h2>
+        <ul class="s-seats">
+          <li><span class="team"><i style="--c:#2293d1"></i>Alpine</span><em>See The Air</em></li>
+          <li><span class="team"><i style="--c:#ff8000"></i>McLaren</span><em>Sector 04 Racing</em></li>
+          <li><span class="team"><i style="--c:#64c4ff"></i>Williams</span><em>Overdrive Racing Series</em></li>
+          <li><span class="team"><i style="--c:#8452a1"></i>Mackles Racing</span><em>Endurance</em></li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="s-h">Rig</h2>
+        <ul class="s-list s-list--plain">
+          <li>Moza R9 V3 direct drive, GS V2P wheel</li>
+          <li>Moza CRP2 load cell pedals</li>
+          <li>GT Omega Prime Lite cockpit, Inertia seat</li>
+          <li>32" 1440p display at 180 Hz</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="s-h">Aiming for</h2>
+        <ul class="s-list s-list--plain">
+          <li>My first race win</li>
+          <li>Racing in the PSGL and getting scouted</li>
+          <li>A seat with One Hub Racing</li>
+          <li>Racing professionally, in sim or in a real car</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="s-h">Reach</h2>
+        <ul class="s-reach" data-cv-reach></ul>
+      </section>
+    </div>
+  </div>
+
+  <footer class="s-foot">
+    <span>Open to league seats, endurance crews, sponsors and collabs.</span>
+    <span>Every result, updated after each race: z0mb1xcat.github.io/Z0MB1XCAT-Profile</span>
+  </footer>
+</article>
+</div>
+</body>
+</html>

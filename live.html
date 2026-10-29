@@ -24,8 +24,10 @@
   <script defer src="assets/js/audio.js"></script>
   <script defer src="assets/js/site.js"></script>
   <script defer src="assets/js/motion.js"></script>
-  <script defer src="assets/data/calendar.js"></script>
-  <script defer src="assets/js/calendar.js"></script>
+  <script defer src="assets/data/profile.js"></script>
+  <script defer src="assets/data/racing.js"></script>
+  <script defer src="assets/js/racing.js"></script>
+  <script defer src="assets/js/reach.js"></script>
   <script defer src="assets/js/live.js"></script>
 </head>
 <body>
@@ -56,6 +58,7 @@
       <li><a href="driver.html"><span class="t">Driver</span><span class="d">Results, leagues and how I drive</span></a></li>
       <li><a href="rig.html"><span class="t">The rig</span><span class="d">Every part in 3D, and my settings</span></a></li>
       <li><a href="live.html" aria-current="page"><span class="t">Live</span><span class="d">Stream schedule and race calendar</span></a></li>
+      <li><a href="news.html"><span class="t">News</span><span class="d">Race reports and updates</span></a></li>
       <li><a href="teams.html"><span class="t">For teams</span><span class="d">Seats, sponsors and collabs: get in touch</span></a></li>
     </ul>
     <div class="menu-foot">
@@ -130,7 +133,7 @@
         <div data-cal-list></div>
         <div class="cal-also" data-cal-also hidden></div>
         <details class="cal-done" data-cal-done>
-          <summary>Results so far</summary>
+          <summary>This season so far</summary>
           <ol class="cal-list"></ol>
         </details>
       </div>
@@ -143,10 +146,10 @@
           <p class="lead muted">Streams on Twitch, highlights and clips everywhere else.</p>
         </div>
         <ul class="channels">
-          <li><a href="https://www.twitch.tv/z0mb1xcat"><span class="c-n">Twitch</span><span class="c-h">z0mb1xcat</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
-          <li><a href="https://www.youtube.com/@Z0MB1XCAT"><span class="c-n">YouTube</span><span class="c-h">@Z0MB1XCAT</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
-          <li><a href="https://www.tiktok.com/@z0mb1xcat"><span class="c-n">TikTok</span><span class="c-h">@z0mb1xcat</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
-          <li><a href="https://discord.gg/ycYuqF2Wdp"><span class="c-n">Discord</span><span class="c-h">Join the server</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+          <li><a href="https://www.twitch.tv/z0mb1xcat"><span class="c-n">Twitch</span><span class="c-h">z0mb1xcat<em data-reach-count="twitch"></em></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+          <li><a href="https://www.youtube.com/@Z0MB1XCAT"><span class="c-n">YouTube</span><span class="c-h">@Z0MB1XCAT<em data-reach-count="youtube"></em></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+          <li><a href="https://www.tiktok.com/@z0mb1xcat"><span class="c-n">TikTok</span><span class="c-h">@z0mb1xcat<em data-reach-count="tiktok"></em></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+          <li><a href="https://discord.gg/ycYuqF2Wdp"><span class="c-n">Discord</span><span class="c-h">Join the server<em data-reach-count="discord"></em></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
         </ul>
       </div>
     </section>
@@ -170,6 +173,7 @@
             <li><a href="driver.html">Driver</a></li>
             <li><a href="rig.html">The rig</a></li>
             <li><a href="live.html">Live</a></li>
+            <li><a href="news.html">News</a></li>
             <li><a href="teams.html">For teams</a></li>
           </ul>
         </div>

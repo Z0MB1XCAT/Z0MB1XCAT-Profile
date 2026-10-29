@@ -14,7 +14,10 @@ as they are; Three.js, Lenis and the fonts load from CDNs.
 | `driver.html` | Results, leagues and teams, driving style, favourites, goals            |
 | `rig.html`    | The rig in 3D with exploded view, full spec, settings, wishlist         |
 | `live.html`   | Live status, Twitch and Discord, the week's schedule, race calendar     |
-| `teams.html`  | For teams: what I'm open to, the driver sheet, contact                  |
+| `news.html`   | News: every post from `posts/`, newest first                            |
+| `news/*.html` | One page per post, made by the build                                    |
+| `teams.html`  | For teams: numbers and reach, partner slots, driver sheet, contact      |
+| `cv.html`     | The driver sheet on its own, as printed to the PDF                      |
 | `404.html`    | Served by GitHub Pages for any missing path                             |
 
 ## How the pages are made
@@ -24,7 +27,7 @@ Every page shares one head, nav, menu and footer. They are written once, in
 
 ```
 src/index.html  src/story.html  src/driver.html  src/rig.html
-src/live.html   src/teams.html  src/404.html
+src/live.html   src/news.html   src/teams.html  src/cv.html  src/404.html
 ```
 
 **Edit `src/`, never the `.html` files in the root.** After any change, run:
@@ -37,39 +40,74 @@ That rewrites the root pages. To add a page, add `src/<name>.html` with the
 same `<!--@page {...} -->` header the others use, and add it to `LINKS` in
 `tools/build.mjs` if it belongs in the menu.
 
+## The everyday jobs
+
+There are npm shortcuts for everything you'll do often:
+
+```bash
+npm run build                      # rebuild the pages after editing src/, data or posts
+npm run post -- "Pole at Montréal"  # start a news post
+npm run sheet                      # reprint the driver sheet PDF
+npm run publish -- "Zandvoort result"  # build, reprint, commit and push, all in one
+```
+
+### After a race
+
+1. Open `assets/data/racing.js`, find the round and add `result: 'P5'`
+   (See The Air is a pair: `result: '8·3'`). Add `grid`, `points`, a
+   `note` and your teammate's `mate` if you have them, and update
+   `standing` on the season. The top of the file explains every field.
+2. Optional: write it up with `npm run post -- "Title"`.
+3. `npm run publish -- "Zandvoort result"`.
+
+Every number on the site (starts, podiums, averages, the season cards, the
+head-to-head with your teammate, the home page's latest results, the race
+calendar and the driver sheet) is worked out from that one file.
+
+### News posts
+
+Each file in `posts/` is one post, written in Markdown with a short header
+(title, date, summary, and an optional picture). `npm run post` makes one
+with a guide to the formatting inside. Pictures go in `assets/img/news/`; a
+YouTube link on a line of its own becomes the video. Add `draft: true` to
+the header to keep a post off the site, and delete the file to remove it.
+The newest three also show on the home page.
+
 ## Things you'll update
 
-- **Race calendar**: `assets/data/calendar.js`. Each league round has a date,
-  an optional UK start time, a track and a flag code; add `result: 'P3'` after
-  each race. The Live page shows the next round with a countdown, the rest by
-  month, and the results so far; the home page shows the next round. Rounds
-  without a time show "Time TBC" until you add one.
+- **Race calendar and results**: `assets/data/racing.js` (see After a race).
+  Each round in a current season has a date and track; the season's usual
+  start time applies unless a round has its own `time`. Past seasons can be a
+  single `raw` line of results.
+- **Reach and iRating**: `assets/data/profile.js`. Twitch followers and
+  Discord members update themselves; YouTube, TikTok and iRating are typed in,
+  so change them now and then (and the `updated` date).
+- **Partner slots**: `assets/data/partners.js`. What each kind of partner
+  gets; set `open: false` when one is taken, and add real partners (name,
+  link, logo in `assets/img/partners/`) to `current`.
 - **Settings**: `assets/data/settings.js`. One set per tab (F1 25, pedals,
   ACC, Assetto Corsa, iRacing), each with a short note and grouped rows, shown
   at `rig.html#settings` with a "Copy for Discord" button. The `common` block
   (equaliser and base curve) is added to every wheelbase tab. Change
   `updated` when you edit it.
-- **Results**: the `results` table in `src/index.html` and `src/driver.html`,
-  the podium chapter in `src/story.html`, and the driver sheet in
-  `src/teams.html`. Then rebuild, and regenerate the PDF (below).
 - **Stream schedule**: edit it on Twitch. The site reads your Twitch
   schedule each time a page loads, so it follows automatically. The copy at
   the top of `assets/js/site.js` is only shown if Twitch can't be reached;
   update it now and then so the two don't drift far apart.
 - **Your reaction time**: `REF` near the top of the game in `assets/js/home.js`
   (milliseconds), and the matching sentences in the pages that mention 0.183.
-- **Contact email**: `EMAIL` in `tools/build.mjs` (footer) and in
-  `src/teams.html`.
+- **Contact email**: `EMAIL` in `tools/build.mjs` (footer), `src/teams.html`,
+  `assets/js/teams.js` and `src/cv.html`.
 
 ### The driver sheet PDF
 
-`assets/z0mb1xcat-driver-sheet.pdf` is the For teams page's driver sheet,
-printed to one A4 page. After changing the sheet, regenerate it with the
-local server running:
-
-```bash
-node tools/make-sheet.mjs
-```
+`cv.html` is the driver sheet: the numbers, this season, earlier seasons and
+reach fill themselves in from `assets/data/`, and the words (profile, seats,
+racecraft, rig, goals) are in `src/cv.html`. `npm run sheet` prints it to
+`assets/z0mb1xcat-driver-sheet.pdf` (one A4 page), saves the picture of it on
+the For teams page and makes the QR code. It serves the site itself, so the
+local server doesn't need to be running, and it warns you if the sheet runs
+past one page. `npm run publish` does this for you.
 
 ## Live status
 
@@ -83,16 +121,23 @@ just shows the next scheduled stream.
 ```
 src/                       each page's own content (see above)
 tools/build.mjs            builds the pages: shared head, nav, menu, footer
-tools/make-sheet.mjs       prints the driver sheet PDF
+tools/make-sheet.mjs       prints the driver sheet PDF, its preview and QR code
+tools/new-post.mjs         starts a news post (npm run post)
+tools/publish.mjs          build, sheet, commit and push (npm run publish)
+posts/                     news posts, one Markdown file each
 assets/css/site.css        reset, tokens, type, nav, menu, buttons, footer, motion
-assets/css/pages.css       every page section, and the print layout of the sheet
-assets/data/               calendar.js and settings.js, the files you edit
+assets/css/pages.css       every page section, results, news and the For teams page
+assets/css/cv.css          the driver sheet, on screen and printed
+assets/data/               racing.js, profile.js, partners.js and settings.js, the files you edit
 assets/js/site.js          schedule and live status, nav, menu, sound toggle, embeds
 assets/js/motion.js        headline and list reveals, photo wipes, marquee, magnetic buttons
 assets/js/audio.js         engine sound from the onboard recording
 assets/js/home.js          statement fill, photo parallax, start game
 assets/js/live.js          live page status and countdown
-assets/js/calendar.js      race calendar on the live page
+assets/js/racing.js        results, stats, season cards, history, calendar and next race
+assets/js/reach.js         channel counts, with Twitch and Discord fetched live
+assets/js/teams.js         partner slots and the enquiry emails on the For teams page
+assets/js/cv.js            fills in the driver sheet
 assets/js/settings.js      settings tabs on the rig page
 assets/js/track.js         lap timing helpers and the 2D mini map
 assets/js/track-rbr.js     circuit outline, corners and simulated speed trace
@@ -163,13 +208,11 @@ Pages from the `main` branch at:
 
 **https://z0mb1xcat.github.io/Z0MB1XCAT-Profile/**
 
-To publish a change: rebuild if you edited `src/`, then commit and push.
+To publish a change, one command builds the pages, reprints the driver
+sheet, commits everything and pushes it:
 
 ```bash
-node tools/build.mjs
-git add -A
-git commit -m "Describe the change"
-git push
+npm run publish -- "Describe the change"
 ```
 
 Pages updates within a minute or two. The share links (`SITE` in

@@ -2,7 +2,12 @@
 {
   "title": "Driver | Z0MB1XCAT",
   "description": "Results, leagues and driving style of Z0MB1XCAT: See The Air for Alpine, Sector 04 Racing for McLaren, Overdrive Racing Series for Williams, and endurance with Mackles Racing.",
-  "ogTitle": "Driver, Z0MB1XCAT"
+  "ogTitle": "Driver, Z0MB1XCAT",
+  "scripts": [
+    "assets/data/profile.js",
+    "assets/data/racing.js",
+    "assets/js/racing.js"
+  ]
 }
 -->
 <!--@main-->
@@ -15,29 +20,35 @@
         <div><dt>From</dt><dd><img src="assets/img/wales-flag.svg" alt="" width="24" height="15">Swansea, Wales</dd></div>
         <div><dt>Discipline</dt><dd>Open-wheel</dd></div>
         <div><dt>Main sim</dt><dd>F1 25</dd></div>
-        <div><dt>iRating</dt><dd>1578, Formula</dd></div>
+        <div><dt>iRating</dt><dd><span data-stat="irating">1578</span>, Formula</dd></div>
       </dl>
     </div>
   </div>
 </header>
 
+<!-- Results: everything here comes from assets/data/racing.js -->
 <section class="sec sec--flush-top" aria-labelledby="results-h">
   <div class="container">
     <div class="sec-head">
       <h2 class="display h2" id="results-h">Results</h2>
-      <p class="lead muted">No silverware yet, and I'm not going to pretend otherwise. These are the ones that count so far.</p>
+      <p class="lead muted">Every league race I've started, across <span data-stat="seasons">5</span> seasons. <span data-stat-line>No win yet.</span></p>
     </div>
-    <table class="results">
-      <caption class="sr-only">Race results</caption>
-      <thead><tr><th scope="col">Result</th><th scope="col">Race</th><th scope="col">League</th><th scope="col">Notes</th></tr></thead>
-      <tbody>
-        <tr><td class="r-pos">P2</td><td class="r-race"><img src="assets/img/flags/ca.svg" alt="" width="28" height="14">Canada</td><td>Chaos Grid</td><td class="muted">Best finish so far</td></tr>
-        <tr><td class="r-pos">P3</td><td class="r-race"><img src="assets/img/flags/jp.svg" alt="" width="28" height="19">Suzuka</td><td>See The Air</td><td><span class="team"><i style="--c:#2293d1"></i>Alpine</span></td></tr>
-        <tr><td class="r-pos">P3</td><td class="r-race"><img src="assets/img/flags/it.svg" alt="" width="28" height="19">Monza</td><td>Sector 04 Racing</td><td><span class="team"><i style="--c:#ff8000"></i>McLaren</span></td></tr>
-        <tr><td class="r-pos">6 h</td><td class="r-race"><img src="assets/img/flags/us.svg" alt="" width="28" height="15">Road America</td><td>Endurance, LMP2</td><td class="muted">Solo, start to finish, Assetto Corsa</td></tr>
-        <tr><td class="r-pos">P7</td><td class="r-race"><img src="assets/img/flags/bh.svg" alt="" width="28" height="17">Bahrain</td><td>Chaos Grid</td><td class="muted">My first ever league race</td></tr>
-      </tbody>
-    </table>
+
+    <dl class="career career--wide" aria-label="Career numbers, all league races">
+      <div><dt>Starts</dt><dd data-stat="starts">31</dd></div>
+      <div><dt>Podiums</dt><dd data-stat="podiums">8</dd><p><span data-stat="reversePodiums">3</span> in reverse-grid races</p></div>
+      <div><dt>Top-10 finishes</dt><dd data-stat="top10">27</dd><p><span data-stat="top10Rate">96%</span> of finishes</p></div>
+      <div><dt>Average finish</dt><dd>P<span data-stat="avg">6.3</span></dd></div>
+      <div><dt>Finish rate</dt><dd data-stat="finishRate">90%</dd><p><span data-stat="dnf">3</span> DNFs</p></div>
+      <div><dt>Poles</dt><dd data-stat="poles">1</dd></div>
+    </dl>
+
+    <h3 class="sub-h">This season</h3>
+    <div class="seasons-now" data-seasons-now></div>
+
+    <h3 class="sub-h">Season by season</h3>
+    <div class="history" data-history></div>
+    <p class="meta mt-6">See The Air runs two races a round: a reverse-grid race, then the feature. Both count in the numbers above.</p>
   </div>
 </section>
 
@@ -51,12 +62,12 @@
       <li>
         <p class="lg-team display"><i style="--c:#2293d1"></i>Alpine</p>
         <p class="lg-name">See The Air<span>F1 25 league</span></p>
-        <p class="lg-note"><b>P3 at Suzuka.</b></p>
+        <p class="lg-note"><b>Podiums in both of my seasons,</b> including Suzuka.</p>
       </li>
       <li>
         <p class="lg-team display"><i style="--c:#ff8000"></i>McLaren</p>
         <p class="lg-name">Sector 04 Racing<span>F1 25 league</span></p>
-        <p class="lg-note"><b>P3 at Monza,</b> my latest podium.</p>
+        <p class="lg-note"><b>P3 at Monza and pole at Montréal</b> this season.</p>
       </li>
       <li>
         <p class="lg-team display"><i style="--c:#64c4ff"></i>Williams</p>
@@ -129,7 +140,7 @@
       <p class="lead muted">Where I want this to go. None of these are ticked yet.</p>
     </div>
     <ul class="goals">
-      <li><span><b>Win a race</b><span>Three podiums and no win. This is the big one.</span></span></li>
+      <li><span><b>Win a race</b><span><span data-stat="podiums">8</span> podiums, no win yet. This is the big one.</span></span></li>
       <li><span><b>Race in the PSGL and get scouted</b><span>Get in front of the teams that scout drivers.</span></span></li>
       <li><span><b>Join One Hub Racing</b><span>And race there for money in the future.</span></span></li>
       <li><span><b>Race professionally</b><span>In sim racing or in a real car. As far as it goes.</span></span></li>

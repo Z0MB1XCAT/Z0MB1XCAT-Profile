@@ -342,6 +342,20 @@
     }
   }
 
+  /* ---------------- YouTube in news posts ----------------
+     A still frame until it's pressed, so YouTube only loads (and sets its
+     cookies) for people who want to watch. */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-yt]');
+    if (!b) return;
+    var f = document.createElement('iframe');
+    f.title = 'YouTube video';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(b.getAttribute('data-yt')) + '?autoplay=1&rel=0';
+    b.parentNode.replaceChild(f, b);
+  });
+
   /* ---------------- small things ---------------- */
   // copy buttons: <button data-copy-text="...">
   document.addEventListener('click', function (e) {

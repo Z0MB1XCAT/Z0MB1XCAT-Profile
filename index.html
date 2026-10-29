@@ -34,8 +34,9 @@
   <script defer src="assets/js/rbr-3d.js"></script>
   <script defer src="assets/js/track.js"></script>
   <script defer src="assets/js/home.js"></script>
-  <script defer src="assets/data/calendar.js"></script>
-  <script defer src="assets/js/calendar.js"></script>
+  <script defer src="assets/data/profile.js"></script>
+  <script defer src="assets/data/racing.js"></script>
+  <script defer src="assets/js/racing.js"></script>
   <script type="module" src="assets/js/three/home-3d.js"></script>
 </head>
 <body>
@@ -66,6 +67,7 @@
       <li><a href="driver.html"><span class="t">Driver</span><span class="d">Results, leagues and how I drive</span></a></li>
       <li><a href="rig.html"><span class="t">The rig</span><span class="d">Every part in 3D, and my settings</span></a></li>
       <li><a href="live.html"><span class="t">Live</span><span class="d">Stream schedule and race calendar</span></a></li>
+      <li><a href="news.html"><span class="t">News</span><span class="d">Race reports and updates</span></a></li>
       <li><a href="teams.html"><span class="t">For teams</span><span class="d">Seats, sponsors and collabs: get in touch</span></a></li>
     </ul>
     <div class="menu-foot">
@@ -156,43 +158,28 @@
       <p class="band-caption container meta">Onboard at the Red Bull Ring, Assetto Corsa</p>
     </section>
 
-    <!-- On track -->
+    <!-- On track: numbers and results come from assets/data/racing.js -->
     <section class="sec" aria-labelledby="ontrack">
       <div class="container">
         <div class="sec-head">
           <h2 class="display h2" id="ontrack">On track</h2>
-          <p class="lead muted">Three podiums so far, across three leagues. No win yet, and that's the one I'm after.</p>
+          <p class="lead muted" data-stat-line>Podiums in three leagues, and no win yet. That's the one I'm after.</p>
         </div>
 
-        <table class="results">
-          <caption class="sr-only">Race results</caption>
-          <thead><tr><th scope="col">Result</th><th scope="col">Race</th><th scope="col">League</th><th scope="col">Team</th></tr></thead>
-          <tbody>
-            <tr>
-              <td class="r-pos">P2</td>
-              <td class="r-race"><img src="assets/img/flags/ca.svg" alt="" width="28" height="14">Canada</td>
-              <td>Chaos Grid</td>
-              <td class="muted">Best finish so far</td>
-            </tr>
-            <tr>
-              <td class="r-pos">P3</td>
-              <td class="r-race"><img src="assets/img/flags/jp.svg" alt="" width="28" height="19">Suzuka</td>
-              <td>See The Air</td>
-              <td><span class="team"><i style="--c:#2293d1"></i>Alpine</span></td>
-            </tr>
-            <tr>
-              <td class="r-pos">P3</td>
-              <td class="r-race"><img src="assets/img/flags/it.svg" alt="" width="28" height="19">Monza</td>
-              <td>Sector 04 Racing</td>
-              <td><span class="team"><i style="--c:#ff8000"></i>McLaren</span></td>
-            </tr>
-            <tr>
-              <td class="r-pos">6 h</td>
-              <td class="r-race"><img src="assets/img/flags/us.svg" alt="" width="28" height="15">Road America</td>
-              <td>Endurance, LMP2</td>
-              <td class="muted">Solo, start to finish</td>
-            </tr>
-          </tbody>
+        <dl class="career" aria-label="Career numbers, all league races">
+          <div><dt>Starts</dt><dd data-stat="starts">31</dd></div>
+          <div><dt>Podiums</dt><dd data-stat="podiums">8</dd></div>
+          <div><dt>Top-10 finishes</dt><dd data-stat="top10">27</dd></div>
+          <div><dt>Average finish</dt><dd>P<span data-stat="avg">6.3</span></dd></div>
+          <div><dt>Best finish</dt><dd data-stat="best">P2</dd></div>
+          <div><dt>Poles</dt><dd data-stat="poles">1</dd></div>
+        </dl>
+
+        <h3 class="sub-h">Latest results</h3>
+        <table class="results results--latest">
+          <caption class="sr-only">My most recent league results</caption>
+          <thead><tr><th scope="col">Result</th><th scope="col">Race</th><th scope="col">League</th><th scope="col">Team and notes</th></tr></thead>
+          <tbody data-latest-results="5"></tbody>
         </table>
 
         <div class="teams">
@@ -201,7 +188,7 @@
           <div><span class="team"><i style="--c:#64c4ff"></i>Williams</span><p class="meta">Overdrive Racing Series</p></div>
           <div><span class="team"><i style="--c:#8452a1"></i>Mackles Racing</span><p class="meta">Endurance</p></div>
         </div>
-        <a class="btn btn--line mt-10" href="driver.html">Full driver profile <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn--line mt-10" href="driver.html#results-h">Every result and season <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </div>
     </section>
 
@@ -263,7 +250,7 @@
       <div class="container live-grid">
         <div>
           <h2 class="display h2" id="live-h">Live most days</h2>
-          <p class="lead muted mt-6">Practice, league nights and public lobbies on Twitch. Friday is league night.</p>
+          <p class="lead muted mt-6">Practice, league nights and public lobbies on Twitch. League nights are Friday to Sunday.</p>
           <div class="flex flex-wrap gap-3 mt-8">
             <a class="btn btn--ink" href="https://www.twitch.tv/z0mb1xcat">Watch on Twitch</a>
             <a class="btn btn--line" href="https://discord.gg/ycYuqF2Wdp">Join the Discord</a>
@@ -275,6 +262,22 @@
           </a>
         </div>
         <ol class="week" data-week aria-label="Weekly stream schedule, UK time"></ol>
+      </div>
+    </section>
+
+    <!-- News: the latest posts from the posts/ folder -->
+    <section class="sec sec--paper2" aria-labelledby="news-h">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="display h2" id="news-h">News</h2>
+          <p class="lead muted">Race reports and updates, straight after the chequered flag.</p>
+        </div>
+        <ol class="news-list news-list--short">
+      <li><a class="news-card" href="news/austin-sao-paulo-and-the-standings.html"><span class="nc-img nc-img--date" aria-hidden="true"><b class="display">25</b><span>Oct</span></span><span class="nc-body"><time datetime="2026-10-25">25 October 2026</time><span class="nc-t display">Austin, São Paulo and the standings</span><span class="nc-s">A reverse-grid podium at São Paulo, a race at Austin cut short by contact, and fourth in the Sector 04 championship after three rounds.</span></span></a></li>
+      <li><a class="news-card" href="news/pole-at-montreal.html"><span class="nc-img nc-img--date" aria-hidden="true"><b class="display">18</b><span>Oct</span></span><span class="nc-body"><time datetime="2026-10-18">18 October 2026</time><span class="nc-t display">Pole at Montréal</span><span class="nc-s">Pole position in Sector 04 Racing's wildcard round. A two-place penalty took fifth away and left me seventh.</span></span></a></li>
+      <li><a class="news-card" href="news/p3-at-monza.html"><span class="nc-img nc-img--date" aria-hidden="true"><b class="display">11</b><span>Oct</span></span><span class="nc-body"><time datetime="2026-10-11">11 October 2026</time><span class="nc-t display">P3 at Monza to open season two</span><span class="nc-s">Season two of Sector 04 Racing started with a podium in the McLaren, from second on the grid.</span></span></a></li>
+    </ol>
+        <a class="btn btn--line mt-10" href="news.html">All news <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </div>
     </section>
   </main>
@@ -297,6 +300,7 @@
             <li><a href="driver.html">Driver</a></li>
             <li><a href="rig.html">The rig</a></li>
             <li><a href="live.html">Live</a></li>
+            <li><a href="news.html">News</a></li>
             <li><a href="teams.html">For teams</a></li>
           </ul>
         </div>
