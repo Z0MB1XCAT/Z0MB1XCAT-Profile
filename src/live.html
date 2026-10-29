@@ -1,0 +1,89 @@
+<!--@page
+{
+  "title": "Live | Z0MB1XCAT",
+  "description": "When Z0MB1XCAT streams sim racing on Twitch: the weekly schedule in UK time, live status, the league race calendar, and every channel.",
+  "ogTitle": "Live, Z0MB1XCAT",
+  "scripts": [
+    "assets/data/calendar.js",
+    "assets/js/calendar.js",
+    "assets/js/live.js"
+  ]
+}
+-->
+<!--@main-->
+<header class="pagehead contours">
+  <div class="container">
+    <h1 class="display h1" data-reveal><span class="split-line"><span>Live</span></span></h1>
+    <div class="status" data-status>
+      <div>
+        <div class="count num" data-count aria-hidden="true">
+          <div><b data-c-d>0</b><span>days</span></div>
+          <div><b data-c-h>00</b><span>hours</span></div>
+          <div><b data-c-m>00</b><span>minutes</span></div>
+        </div>
+        <p class="live-badge"><i></i>Live now</p>
+      </div>
+      <div class="status-copy">
+        <p class="lead" data-status-line aria-live="polite">Checking Twitch.</p>
+        <p class="meta" data-status-local></p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a class="btn btn--ink" href="https://www.twitch.tv/z0mb1xcat">Watch on Twitch</a>
+          <a class="btn btn--line" href="https://discord.gg/ycYuqF2Wdp">Join the Discord</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec sec--plum" aria-labelledby="watch-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="watch-h">Watch here</h2>
+      <p class="lead muted">The player starts muted. The Discord is where public lobbies and league news go first.</p>
+    </div>
+    <div class="embeds">
+      <div class="embed embed--tw" data-twitch="z0mb1xcat"><div data-embed-slot></div><p class="embed-note">Loading the Twitch player. If it doesn't appear, an extension may be blocking it: <a class="textlink" href="https://www.twitch.tv/z0mb1xcat">open the channel on Twitch</a>.</p></div>
+      <div class="embed embed--dc" data-discord="1540306430966628383"><div data-embed-slot></div><p class="embed-note">Loading the Discord server. If it doesn't appear, <a class="textlink" href="https://discord.gg/ycYuqF2Wdp">join from Discord directly</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="week-h">
+  <div class="container live-grid">
+    <div>
+      <h2 class="display h2" id="week-h">Race week</h2>
+      <p class="lead muted mt-6">My stream schedule, straight from Twitch. All times are UK time and follow British Summer Time automatically. Friday is league night.</p>
+    </div>
+    <ol class="week week--full" data-week data-week-full aria-label="Weekly stream schedule, UK time"></ol>
+  </div>
+</section>
+
+<section class="sec sec--flush-top" id="calendar" aria-labelledby="cal-h" data-calendar hidden>
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="cal-h">Race calendar</h2>
+      <p class="lead muted">Every league round I've got coming up, in UK time, with my results as the season goes on.</p>
+    </div>
+    <div class="cal-next" data-cal-next></div>
+    <div data-cal-list></div>
+    <details class="cal-done" data-cal-done>
+      <summary>Results so far</summary>
+      <ol class="cal-list"></ol>
+    </details>
+  </div>
+</section>
+
+<section class="sec sec--flush-top" aria-labelledby="ch-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="ch-h">Channels</h2>
+      <p class="lead muted">Streams on Twitch, highlights and clips everywhere else.</p>
+    </div>
+    <ul class="channels">
+      <li><a href="https://www.twitch.tv/z0mb1xcat"><span class="c-n">Twitch</span><span class="c-h">z0mb1xcat</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+      <li><a href="https://www.youtube.com/@Z0MB1XCAT"><span class="c-n">YouTube</span><span class="c-h">@Z0MB1XCAT</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+      <li><a href="https://www.tiktok.com/@z0mb1xcat"><span class="c-n">TikTok</span><span class="c-h">@z0mb1xcat</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+      <li><a href="https://discord.gg/ycYuqF2Wdp"><span class="c-n">Discord</span><span class="c-h">Join the server</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></li>
+    </ul>
+  </div>
+</section>

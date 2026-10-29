@@ -1,0 +1,248 @@
+<!--@page
+{
+  "title": "Z0MB1XCAT, sim racer from Swansea",
+  "description": "Z0MB1XCAT is an open-wheel sim racer from Swansea, Wales. F1 25 leagues with Alpine, McLaren and Williams, endurance with Mackles Racing, and live on Twitch most days.",
+  "ogDescription": "Three F1 25 leagues, endurance with Mackles Racing, and a story told as a lap of the Red Bull Ring.",
+  "gate": true,
+  "scripts": [
+    "assets/js/track-rbr.js",
+    "assets/js/rbr-3d.js",
+    "assets/js/track.js",
+    "assets/js/home.js",
+    "assets/data/calendar.js",
+    "assets/js/calendar.js"
+  ],
+  "modules": [
+    "assets/js/three/home-3d.js"
+  ]
+}
+-->
+<!--@before-->
+<!-- Intro: a cold open on my onboard lap of the Red Bull Ring, with its
+     engine sound. Once per browser session (home.js). -->
+<div class="gate" data-gate role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <video class="gate-video" data-gate-video muted playsinline preload="none" poster="assets/video/onboard-poster.jpg" aria-hidden="true">
+    <source src="assets/video/onboard-rbr.webm" type='video/webm; codecs="av01.0.04M.08, opus"'>
+    <source src="assets/video/onboard-rbr.mp4" type="video/mp4">
+  </video>
+  <i class="ob-bar ob-bar--t" aria-hidden="true"></i><i class="ob-bar ob-bar--b" aria-hidden="true"></i>
+  <p class="ob-tag" aria-hidden="true"><i></i>Onboard, Red Bull Ring</p>
+  <div class="ob-name" aria-hidden="true">
+    <div class="ob-plate"><i></i><img src="assets/img/logo.png" alt="" width="64" height="64"><div><b>Z<span class="z0">0</span>MB1XCAT</b><span>Open-wheel sim racer, Swansea, Wales</span></div></div>
+    <div class="ob-teams"><span><i style="--c:#2293d1"></i>Alpine</span><span><i style="--c:#ff8000"></i>McLaren</span><span><i style="--c:#64c4ff"></i>Williams</span><span><i style="--c:#8452a1"></i>Mackles Racing</span></div>
+  </div>
+  <div class="gate-start">
+    <div class="gate-top">
+      <p class="gate-brand"><img src="assets/img/logo.png" alt="" width="40" height="40"><span id="gate-title">Z<span class="z0">0</span>MB1XCAT</span></p>
+      <p class="gate-where">Onboard<span>Red Bull Ring, Assetto Corsa</span></p>
+    </div>
+    <div class="gate-bottom">
+      <div class="gate-actions">
+        <button class="ignite" type="button" data-gate-go="sound">
+          <span class="ignite-ring" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="ignite-label">Engine<br>start</span>
+        </button>
+        <button class="gate-mute" type="button" data-gate-go="mute">Enter without sound</button>
+      </div>
+      <p class="gate-note">The sound is my own onboard lap of the Red Bull Ring.</p>
+    </div>
+  </div>
+  <div class="gate-flash" aria-hidden="true"></div>
+  <button class="gate-skip" type="button" data-gate-skip>Skip intro</button>
+</div>
+
+<!--@main-->
+<!-- Hero: the Red Bull Ring on its real terrain -->
+<section class="hero" aria-labelledby="hero-name">
+  <div class="hero-stage" aria-hidden="true"><canvas data-hero-canvas></canvas></div>
+  <div class="hero-row">
+    <a class="next-card" href="live.html" data-next-card>
+      <span class="next-k" data-next-k>Next stream</span>
+      <span class="next-v display" data-next-v>F1 25</span>
+      <span class="next-w" data-next-w>Monday, 16:30 UK</span>
+    </a>
+    <p class="hero-lead">Open-wheel sim racer from Swansea, Wales. Three F1 25 leagues, endurance with Mackles Racing, and the first win still to come.</p>
+    <p class="hero-caption meta">The Red Bull Ring, built from real terrain data. Hills exaggerated 1.6 times.</p>
+  </div>
+  <span class="hero-stripe" aria-hidden="true"><i></i></span>
+  <h1 class="hero-name display" id="hero-name"><span class="sr-only">Z0MB1XCAT</span><span aria-hidden="true">Z<span class="z0">0</span>MB1XCAT</span></h1>
+</section>
+
+<!-- Who: one statement that fills in as you read -->
+<section class="sec statement-sec" aria-label="About">
+  <div class="container statement-grid">
+    <p class="statement" data-fill>I'm a sim racer from Swansea. One birthday visit to Simrace1 turned into three F1 25 leagues, an endurance team and a stream most days of the week. I race for Wales, and I'm still chasing my first win.</p>
+    <div class="collage" aria-hidden="false">
+      <figure class="ph ph--a" data-speed="-.08">
+        <img src="assets/img/places/simrace1-outside.webp" alt="The shopfront of Simrace1 in Swansea" loading="lazy" width="1100" height="825">
+        <figcaption>Simrace1, Swansea</figcaption>
+      </figure>
+      <figure class="ph ph--b" data-speed=".06">
+        <img src="assets/img/places/simrace1-rigs.webp" alt="A row of sim rigs under blue light at Simrace1" loading="lazy" width="1600" height="1200">
+        <figcaption>Where it started</figcaption>
+      </figure>
+      <figure class="ph ph--c" data-speed="-.14">
+        <img src="assets/img/rig/setup.jpg" alt="My rig at home: GT Omega seat and cockpit with a curved monitor" loading="lazy" width="911" height="1872">
+        <figcaption>That Christmas</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Leagues and teams, drifting with the scroll -->
+<div class="marquee" data-marquee aria-hidden="true">
+  <div class="mq-track">
+    <ul>
+      <li>See The Air<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li class="o">Sector 04 Racing<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li>Overdrive Racing Series<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li class="o">Mackles Racing<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li>Cymru am byth<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+    </ul>
+    <ul>
+      <li>See The Air<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li class="o">Sector 04 Racing<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li>Overdrive Racing Series<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li class="o">Mackles Racing<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+      <li>Cymru am byth<img src="assets/img/logo.png" alt="" width="70" height="70"></li>
+    </ul>
+  </div>
+</div>
+
+<!-- The lap -->
+<section class="band" aria-labelledby="lap-h">
+  <video class="band-video" data-autopause data-sound muted loop playsinline preload="none" poster="assets/video/onboard-poster.jpg" aria-hidden="true">
+    <source src="assets/video/onboard-rbr.webm" type='video/webm; codecs="av01.0.04M.08, opus"'>
+    <source src="assets/video/onboard-rbr.mp4" type="video/mp4">
+  </video>
+  <div class="container band-copy">
+    <h2 class="display h2" id="lap-h">My story,<br>as a lap</h2>
+    <div class="band-side">
+      <p class="lead">The Red Bull Ring was the first circuit I learned. Ten corners, ten chapters: from my first visit to Simrace1 to the win I'm still chasing. You drive it by scrolling.</p>
+      <a class="btn btn--accent" href="story.html">Drive the lap <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+  <p class="band-caption container meta">Onboard at the Red Bull Ring, Assetto Corsa</p>
+</section>
+
+<!-- On track -->
+<section class="sec" aria-labelledby="ontrack">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="ontrack">On track</h2>
+      <p class="lead muted">Three podiums so far, across three leagues. No win yet, and that's the one I'm after.</p>
+    </div>
+
+    <table class="results">
+      <caption class="sr-only">Race results</caption>
+      <thead><tr><th scope="col">Result</th><th scope="col">Race</th><th scope="col">League</th><th scope="col">Team</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="r-pos">P2</td>
+          <td class="r-race"><img src="assets/img/flags/ca.svg" alt="" width="28" height="14">Canada</td>
+          <td>Chaos Grid</td>
+          <td class="muted">Best finish so far</td>
+        </tr>
+        <tr>
+          <td class="r-pos">P3</td>
+          <td class="r-race"><img src="assets/img/flags/jp.svg" alt="" width="28" height="19">Suzuka</td>
+          <td>See The Air</td>
+          <td><span class="team"><i style="--c:#2293d1"></i>Alpine</span></td>
+        </tr>
+        <tr>
+          <td class="r-pos">P3</td>
+          <td class="r-race"><img src="assets/img/flags/it.svg" alt="" width="28" height="19">Monza</td>
+          <td>Sector 04 Racing</td>
+          <td><span class="team"><i style="--c:#ff8000"></i>McLaren</span></td>
+        </tr>
+        <tr>
+          <td class="r-pos">6 h</td>
+          <td class="r-race"><img src="assets/img/flags/us.svg" alt="" width="28" height="15">Road America</td>
+          <td>Endurance, LMP2</td>
+          <td class="muted">Solo, start to finish</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="teams">
+      <div><span class="team"><i style="--c:#2293d1"></i>Alpine</span><p class="meta">See The Air</p></div>
+      <div><span class="team"><i style="--c:#ff8000"></i>McLaren</span><p class="meta">Sector 04 Racing</p></div>
+      <div><span class="team"><i style="--c:#64c4ff"></i>Williams</span><p class="meta">Overdrive Racing Series</p></div>
+      <div><span class="team"><i style="--c:#8452a1"></i>Mackles Racing</span><p class="meta">Endurance</p></div>
+    </div>
+    <a class="btn btn--line mt-10" href="driver.html">Full driver profile <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<!-- The rig, in 3D -->
+<section class="sec sec--paper2 rig-sec" aria-labelledby="rig-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="rig-h">The rig</h2>
+      <p class="lead muted">Direct drive, loadcell braking and an aluminium cockpit that doesn't move. Drag to turn it, or pick a part.</p>
+    </div>
+    <div class="rig-view" data-rig>
+      <div class="rig-stage">
+        <canvas data-rig-canvas aria-label="3D model of my sim rig. Drag to rotate." role="img"></canvas>
+        <div class="rig-pins" data-rig-pins></div>
+        <p class="rig-hint meta" data-rig-hint>Drag to rotate</p>
+      </div>
+      <ol class="parts" data-rig-parts>
+        <li><button type="button" data-part="wheelbase"><span class="pn">1</span><span><b>Moza R9 V3</b><em>Wheelbase, direct drive</em></span></button></li>
+        <li><button type="button" data-part="wheel"><span class="pn">2</span><span><b>Moza GS V2P</b><em>Formula-style wheel</em></span></button></li>
+        <li><button type="button" data-part="pedals"><span class="pn">3</span><span><b>Moza CRP2</b><em>Loadcell pedals</em></span></button></li>
+        <li><button type="button" data-part="cockpit"><span class="pn">4</span><span><b>GT Omega Prime Lite</b><em>Aluminium profile cockpit</em></span></button></li>
+        <li><button type="button" data-part="seat"><span class="pn">5</span><span><b>GT Omega Inertia</b><em>Bucket seat</em></span></button></li>
+        <li><button type="button" data-part="display"><span class="pn">6</span><span><b>32" 1440p, 180 Hz</b><em>Curved display</em></span></button></li>
+      </ol>
+    </div>
+    <a class="btn btn--line mt-10" href="rig.html">Every part in detail <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<!-- Lights out -->
+<section class="sec sec--plum" id="lights-out" aria-labelledby="start-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="start-h">Beat my start</h2>
+      <p class="lead muted">Starts are my strength. My best reaction is 0.183 seconds. Five lights come on, one a second. Go the moment they go out.</p>
+    </div>
+    <div class="game" data-game>
+      <div class="game-stage" data-game-stage data-state="idle" role="button" tabindex="0" aria-describedby="game-help">
+        <div class="gantry gantry--big" aria-hidden="true">
+          <div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div>
+        </div>
+        <div class="game-readout" aria-live="polite">
+          <p class="game-time display num" data-game-time>0.000</p>
+          <p class="game-msg" data-game-msg id="game-help">Tap here or press <kbd>Space</kbd> to start.</p>
+        </div>
+      </div>
+      <div class="board">
+        <ol class="board-rows" data-game-board></ol>
+        <p class="board-k meta">Your attempts</p>
+        <ul class="laps" data-game-laps></ul>
+        <p class="meta board-note">Human median from the Human Benchmark reaction test. Your best is saved in this browser only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live -->
+<section class="sec" aria-labelledby="live-h">
+  <div class="container live-grid">
+    <div>
+      <h2 class="display h2" id="live-h">Live most days</h2>
+      <p class="lead muted mt-6">Practice, league nights and public lobbies on Twitch. Friday is league night.</p>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a class="btn btn--ink" href="https://www.twitch.tv/z0mb1xcat">Watch on Twitch</a>
+        <a class="btn btn--line" href="https://discord.gg/ycYuqF2Wdp">Join the Discord</a>
+      </div>
+      <a class="next-race" href="live.html#calendar" data-next-race hidden>
+        <span class="nr-k">Next race<b data-nr-when></b></span>
+        <span class="nr-track display" data-nr-track></span>
+        <span class="nr-meta" data-nr-meta></span>
+      </a>
+    </div>
+    <ol class="week" data-week aria-label="Weekly stream schedule, UK time"></ol>
+  </div>
+</section>

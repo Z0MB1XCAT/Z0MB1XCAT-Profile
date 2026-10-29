@@ -1,0 +1,99 @@
+<!--@page
+{
+  "title": "The rig | Z0MB1XCAT",
+  "description": "Z0MB1XCAT's sim rig in 3D: Moza R9 V3, GS V2P wheel, CRP2 loadcell pedals, GT Omega Prime Lite cockpit, Inertia seat and a 32 inch 180 Hz display, plus my force feedback and pedal settings.",
+  "ogTitle": "The rig, Z0MB1XCAT",
+  "scripts": [
+    "assets/data/settings.js",
+    "assets/js/settings.js"
+  ],
+  "modules": [
+    "assets/js/three/rig-boot.js"
+  ],
+  "bodyAttrs": "data-rig-page"
+}
+-->
+<!--@main-->
+<header class="pagehead">
+  <div class="container">
+    <h1 class="display h1" data-reveal><span class="split-line"><span>The rig</span></span></h1>
+    <div class="pagehead-row">
+      <p class="lead">Direct drive, loadcell braking and an aluminium profile cockpit that doesn't move. Every part below is in the model: drag to turn it, pick a part to fly to it, or pull it apart.</p>
+      <dl class="profile">
+        <div><dt>Wheelbase</dt><dd>Moza R9 V3</dd></div>
+        <div><dt>Pedals</dt><dd>Moza CRP2</dd></div>
+        <div><dt>Cockpit</dt><dd>GT Omega</dd></div>
+        <div><dt>Display</dt><dd>1440p, 180 Hz</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<section class="sec sec--paper2 rig-full" aria-label="3D model of the rig">
+  <div class="container">
+    <div class="rig-view" data-rig>
+      <div>
+        <div class="rig-stage">
+          <canvas data-rig-canvas aria-label="3D model of my sim rig. Drag to rotate." role="img"></canvas>
+          <div class="rig-pins" data-rig-pins></div>
+          <p class="rig-hint meta" data-rig-hint>Drag to rotate</p>
+        </div>
+        <div class="rig-tools">
+          <button class="toggle" type="button" data-explode aria-pressed="false"><span class="sw"></span>Exploded view</button>
+          <button class="toggle" type="button" data-reset>Reset the view</button>
+        </div>
+      </div>
+      <ol class="parts" data-rig-parts>
+        <li><button type="button" data-part="wheelbase"><span class="pn">1</span><span><b>Moza R9 V3</b><em>Wheelbase, direct drive</em></span></button></li>
+        <li><button type="button" data-part="wheel"><span class="pn">2</span><span><b>Moza GS V2P</b><em>Formula-style wheel</em></span></button></li>
+        <li><button type="button" data-part="pedals"><span class="pn">3</span><span><b>Moza CRP2</b><em>Loadcell pedals</em></span></button></li>
+        <li><button type="button" data-part="cockpit"><span class="pn">4</span><span><b>GT Omega Prime Lite</b><em>Aluminium profile cockpit</em></span></button></li>
+        <li><button type="button" data-part="seat"><span class="pn">5</span><span><b>GT Omega Inertia</b><em>Bucket seat</em></span></button></li>
+        <li><button type="button" data-part="display"><span class="pn">6</span><span><b>32" 1440p, 180 Hz</b><em>Curved display</em></span></button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="spec-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="spec-h">The spec</h2>
+      <p class="lead muted">What each part is, and why it matters when you're chasing a lap time.</p>
+    </div>
+    <ol class="specs">
+      <li><span class="s-n">1</span><h3 class="s-t display"><span class="s-k">Wheelbase</span>Moza R9 V3</h3><p>Direct drive. The detail coming through the wheel is what makes catching a slide possible rather than lucky.</p><img class="s-img" src="assets/img/rig/wheelbase.webp" alt="Moza R9 V3 wheelbase" loading="lazy" width="440" height="440"></li>
+      <li><span class="s-n">2</span><h3 class="s-t display"><span class="s-k">Wheel</span>Moza GS V2P</h3><p>A formula-style rim, with everything I need mapped to the front so my hands stay where they should.</p><img class="s-img" src="assets/img/rig/wheel.webp" alt="Moza GS V2P steering wheel" loading="lazy" width="440" height="440"></li>
+      <li><span class="s-n">3</span><h3 class="s-t display"><span class="s-k">Pedals</span>Moza CRP2</h3><p>Loadcell brake. You brake by pressure rather than travel, which is where the consistency comes from.</p><img class="s-img" src="assets/img/rig/pedals.webp" alt="Moza CRP2 pedals" loading="lazy" width="440" height="440"></li>
+      <li><span class="s-n">4</span><h3 class="s-t display"><span class="s-k">Cockpit</span>GT Omega Prime Lite</h3><p>An aluminium profile frame with no flex under load, which matters a lot with a direct drive base bolted to it.</p><img class="s-img" src="assets/img/rig/cockpit.webp" alt="GT Omega Prime Lite cockpit" loading="lazy" width="440" height="440"></li>
+      <li><span class="s-n">5</span><h3 class="s-t display"><span class="s-k">Seat</span>GT Omega Inertia</h3><p>A bucket seat that holds you in place, so you're not bracing against the wheel through a long stint.</p><img class="s-img" src="assets/img/rig/seat.webp" alt="GT Omega Inertia bucket seat" loading="lazy" width="440" height="440"></li>
+      <li><span class="s-n">6</span><h3 class="s-t display"><span class="s-k">Display</span>32" 1440p, 180 Hz</h3><p>A single curved 32 inch panel. High refresh matters far more than resolution for judging a braking point.</p><img class="s-img" src="assets/img/rig/display.webp" alt="32 inch curved monitor" loading="lazy" width="440" height="440"></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec--paper2" id="settings" aria-labelledby="set-h" data-settings hidden>
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="set-h">My settings</h2>
+      <p class="lead muted">What I actually run, so you can try it. Copy any set straight into Discord.</p>
+    </div>
+    <div class="set-tabs" role="tablist" aria-label="Settings" data-set-tabs></div>
+    <div data-set-panels></div>
+    <p class="meta" data-set-updated></p>
+  </div>
+</section>
+
+<section class="sec sec--plum contours" aria-labelledby="wish-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="display h2" id="wish-h">On the wishlist</h2>
+      <p class="lead muted">When the budget allows. It's all self funded, so these come one at a time.</p>
+    </div>
+    <ul class="wish">
+      <li><p class="w-t display">Triple screens</p><p>The upgrade I want most. Peripheral vision changes how you place the car and makes side by side racing far less of a guess.</p><span class="w-s">Top of the list</span></li>
+      <li><p class="w-t display">Bavarian Simtec Omega V2</p><p>A proper high end formula rim, to replace the GS V2P when the time comes.</p><span class="w-s">Wanted</span></li>
+      <li><p class="w-t display">Moza Active Pedal</p><p>Force feedback through the brake pedal itself. A real step up in braking consistency.</p><span class="w-s">Wanted</span></li>
+    </ul>
+  </div>
+</section>

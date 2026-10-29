@@ -1,0 +1,177 @@
+<!--@page
+{
+  "title": "The lap | Z0MB1XCAT",
+  "description": "How Z0MB1XCAT got into sim racing, told one corner at a time around a 3D Red Bull Ring: Simrace1, the first rig, Chaos Grid, three leagues, three podiums and the first win still to come.",
+  "ogTitle": "Z0MB1XCAT: my story, as a lap of the Red Bull Ring",
+  "ogDescription": "Ten corners, ten chapters. Scroll to drive it.",
+  "ogType": "article",
+  "scripts": [
+    "assets/js/track-rbr.js",
+    "assets/js/rbr-3d.js",
+    "assets/js/track.js"
+  ],
+  "modules": [
+    "assets/js/three/lap-3d.js"
+  ]
+}
+-->
+<!--@main-->
+<header class="pagehead contours">
+  <div class="container">
+    <h1 class="display h1" data-reveal><span class="split-line"><span>My story,</span></span><span class="split-line"><span>as a lap</span></span></h1>
+    <div class="pagehead-row">
+      <p class="lead">The Red Bull Ring was the first circuit I ever learned, and it's still my favourite. Ten corners, ten chapters. Scroll to drive it, or jump to a corner with the markers on the right.</p>
+      <dl class="facts">
+        <div><dt>Length</dt><dd>4.318 km</dd></div>
+        <div><dt>Turns</dt><dd>10</dd></div>
+        <div><dt>Climb, start to Remus</dt><dd>65 m</dd></div>
+        <div><dt>Simulated lap</dt><dd>1:02.857</dd></div>
+      </dl>
+    </div>
+    <p class="meta mt-8">Turn on engine sound and you hear my real onboard lap, in step with the car, as you scroll.</p>
+  </div>
+</header>
+
+<section class="lap" data-lap aria-label="The lap, chapter by chapter">
+  <div class="lap-stage">
+    <div class="lap-canvas" aria-hidden="true"><canvas data-lap-canvas></canvas><div class="lap-labels" data-lap-labels></div></div>
+
+    <div class="lap-timing" aria-hidden="true">
+      <p class="lap-clock"><span>Lap</span><b class="display" data-lap-clock>0:00.000</b></p>
+      <ol class="sectors">
+        <li data-sector><span>S1</span><b></b></li>
+        <li data-sector><span>S2</span><b></b></li>
+        <li data-sector><span>S3</span><b></b></li>
+      </ol>
+    </div>
+
+    <div class="lap-minimap" aria-hidden="true"><svg data-lap-minimap></svg></div>
+
+    <button class="lap-sound" type="button" data-sound-toggle aria-pressed="false" aria-label="Turn sound on">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg>
+      <span data-sound-label>Sound off</span>
+    </button>
+
+    <div class="wheel" aria-hidden="true">
+      <div class="rev"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="wheel-main">
+        <div class="wheel-speed"><b data-lap-speed>0</b><span>km/h</span></div>
+        <div class="wheel-gear" data-lap-gear>N</div>
+        <div class="pedals"><span class="pedal thr"><i data-lap-throttle></i></span><span class="pedal brk"><i data-lap-brake></i></span></div>
+      </div>
+    </div>
+
+    <ol class="chapters">
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">Grid</span>Start line</p>
+        <h2 class="ch-t display">Lights out</h2>
+        <p class="ch-b">I'm Z0MB1XCAT, an open-wheel sim racer from Swansea in Wales. This is how I got here, told one corner at a time around the first circuit I ever learned. Keep scrolling to drive.</p>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">1</span>Niki Lauda</p>
+        <h2 class="ch-t display">The birthday</h2>
+        <p class="ch-b">On my birthday I walked into Simrace1, the sim racing centre in Swansea, for the first time. I was hooked before I'd properly sat down.</p>
+        <figure class="ch-fig"><img src="assets/img/places/simrace1-outside.webp" alt="The shopfront of Simrace1 in Swansea" loading="lazy" width="1100" height="825"></figure>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">2</span>The kink</p>
+        <h2 class="ch-t display">That Christmas</h2>
+        <p class="ch-b">That Christmas I had a rig of my own. No more booking slots: I could practise whenever I wanted, and the laps started piling up.</p>
+        <figure class="ch-fig"><img src="assets/img/rig/setup.jpg" alt="My rig at home: a GT Omega bucket seat and cockpit in front of a curved monitor" loading="lazy" width="911" height="1872" style="object-position:50% 36%"></figure>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">3</span>Remus</p>
+        <h2 class="ch-t display">First league race</h2>
+        <p class="ch-b">My first ever league race was in Chaos Grid, at Bahrain, and it lived up to the name. Cars everywhere, all race long. I kept it out of the wreckage and brought it home seventh.</p>
+        <div class="ch-rows"><div><b class="display">P7</b><span>Bahrain<em>Chaos Grid</em></span><img src="assets/img/flags/bh.svg" alt="" width="28" height="17"></div></div>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">4</span>Schlossgold</p>
+        <h2 class="ch-t display">The lesson</h2>
+        <blockquote class="ch-q">You can't always win it on the first lap.</blockquote>
+        <p class="ch-b">Keep your nose clean, stay out of other people's accidents, and the result comes to you.</p>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">5</span>Into the infield</p>
+        <h2 class="ch-t display">Three leagues, three teams</h2>
+        <div class="ch-teams">
+          <div><span class="team"><i style="--c:#2293d1"></i>Alpine</span><em>See The Air</em></div>
+          <div><span class="team"><i style="--c:#ff8000"></i>McLaren</span><em>Sector 04 Racing</em></div>
+          <div><span class="team"><i style="--c:#64c4ff"></i>Williams</span><em>Overdrive Racing Series</em></div>
+        </div>
+        <p class="ch-b">Keeping on top of the chaos across all three is half the fun.</p>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">6</span>Long left</p>
+        <h2 class="ch-t display">The rival</h2>
+        <p class="ch-b">My biggest rival is always my teammate. No bad blood, but the driver in the same car is the first person I'm trying to beat every weekend.</p>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">7</span>Back on the power</p>
+        <h2 class="ch-t display">Three podiums</h2>
+        <div class="ch-rows">
+          <div><b class="display">P2</b><span>Canada<em>Chaos Grid</em></span><img src="assets/img/flags/ca.svg" alt="" width="28" height="14"></div>
+          <div><b class="display">P3</b><span>Suzuka<em>See The Air, Alpine</em></span><img src="assets/img/flags/jp.svg" alt="" width="28" height="19"></div>
+          <div><b class="display">P3</b><span>Monza<em>Sector 04 Racing, McLaren</em></span><img src="assets/img/flags/it.svg" alt="" width="28" height="19"></div>
+        </div>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">8</span>Downhill</p>
+        <h2 class="ch-t display">Six hours, solo</h2>
+        <p class="ch-b">I race endurance events with Mackles Racing. My longest race so far was six hours at Road America in an LMP2, driven solo from start to finish.</p>
+        <a class="textlink ch-link" href="https://www.thesimgrid.com/teams/23451-mackles-racing/grid_feed">Mackles Racing on SimGrid</a>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">9</span>Fast right</p>
+        <h2 class="ch-t display">Starts are my strength</h2>
+        <p class="ch-b">I'm aggressive on entry and controlled on the pass, but the launch is where I'm most confident: a clean getaway and places made up into turn one. My best reaction is 0.183 seconds.</p>
+        <a class="textlink ch-link" href="index.html#lights-out">Try to beat it</a>
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">10</span>Onto the straight</p>
+        <h2 class="ch-t display">Racing for Wales</h2>
+        <p class="ch-b">My proudest moment isn't a result. It's lining up on every grid as a Welsh driver.</p>
+        <img class="ch-flag" src="assets/img/wales-flag.svg" alt="Flag of Wales" width="96" height="58">
+      </li>
+      <li class="ch">
+        <p class="ch-k"><span class="ch-n">Flag</span>Finish line</p>
+        <h2 class="ch-t display">Still chasing P1</h2>
+        <p class="ch-b">No win yet, and I want one badly. Next, I want to race in the PSGL and get scouted, join One Hub Racing, and take this as far as it goes, in sim racing or in a real car.</p>
+        <div class="flex flex-wrap gap-3 mt-5">
+          <a class="btn btn--accent" href="live.html">Watch me try</a>
+          <a class="btn btn--line" href="driver.html">Results so far</a>
+        </div>
+      </li>
+    </ol>
+
+    <nav class="lap-dots" aria-label="Chapters">
+      <button type="button" data-lap-dot="0" aria-label="Start: Lights out"></button>
+      <button type="button" data-lap-dot="1" aria-label="Turn 1: The birthday"></button>
+      <button type="button" data-lap-dot="2" aria-label="Turn 2: That Christmas"></button>
+      <button type="button" data-lap-dot="3" aria-label="Turn 3: First league race"></button>
+      <button type="button" data-lap-dot="4" aria-label="Turn 4: The lesson"></button>
+      <button type="button" data-lap-dot="5" aria-label="Turn 5: Three leagues, three teams"></button>
+      <button type="button" data-lap-dot="6" aria-label="Turn 6: The rival"></button>
+      <button type="button" data-lap-dot="7" aria-label="Turn 7: Three podiums"></button>
+      <button type="button" data-lap-dot="8" aria-label="Turn 8: Six hours, solo"></button>
+      <button type="button" data-lap-dot="9" aria-label="Turn 9: Starts are my strength"></button>
+      <button type="button" data-lap-dot="10" aria-label="Turn 10: Racing for Wales"></button>
+      <button type="button" data-lap-dot="11" aria-label="Finish: Still chasing P1"></button>
+    </nav>
+
+    <div class="lap-progress" aria-hidden="true"><i data-lap-progress></i></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="after">
+  <div class="container sec-head">
+    <h2 class="display h2" id="after">Chequered flag</h2>
+    <div class="grid gap-8 justify-items-start">
+      <p class="lead muted">That's the lap so far. The next chapters get written on Friday league nights and on stream most days of the week.</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn btn--ink" href="index.html#lights-out">Beat my start</a>
+        <a class="btn btn--line" href="driver.html">Driver and results</a>
+      </div>
+    </div>
+  </div>
+</section>
